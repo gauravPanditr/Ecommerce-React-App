@@ -1,6 +1,6 @@
-import React from 'react';
-import { useProductFetch } from '../hooks/useProductFetch';
-import ProductList from '../components/ProductList';
+import React from "react";
+import { useProductFetch } from "../hooks/useProductFetch";
+import ProductList from "../components/ProductList";
 
 const Home: React.FC = () => {
   const { data: products, loading, error } = useProductFetch();

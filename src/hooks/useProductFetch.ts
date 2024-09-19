@@ -1,9 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Product } from '../types/product'; 
 import { FetchState } from '../types/fetchState'; 
-
 
 export const useProductFetch = () => {
   const [state, setState] = useState<FetchState<Product[]>>({
@@ -11,7 +9,6 @@ export const useProductFetch = () => {
     loading: true,
     error: null,
   });
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
