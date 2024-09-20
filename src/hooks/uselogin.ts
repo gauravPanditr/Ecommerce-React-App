@@ -1,4 +1,3 @@
-// src/hooks/useAuth.ts
 import { useState } from "react";
 import axios from "axios";
 import { FetchState } from "../types/fetchState"; 
@@ -16,12 +15,19 @@ export const useAuth = () => {
     setFetchState({ data: null, loading: true, error: null });
 
     try {
-      const response = await axios.post("/login", credentials); // Adjust the endpoint as needed
+      const response = await axios.post("https://fakestoreapi.com/auth/login", credentials);
+        console.log(response);
+          
+      // Adjust the endpoint as needed
       setUser(response.data.username); // Adjust according to your response structure
       localStorage.setItem("userToken", response.data.token); // Store token if needed
       setFetchState({ data: response.data.username, loading: false, error: null });
-    } catch (error) {
-      setFetchState({ data: null, loading: false, error: err.response?.data?.message || "Login failed" });
+    } catch (error:any) {
+      setFetchState({
+        data: null,
+        loading: false,
+        error: error.response?.data?.message || "Login failed. Please try again.",
+      });
     }
   };
 
@@ -30,5 +36,5 @@ export const useAuth = () => {
     localStorage.removeItem("userToken");
   };
 
-  return { user, fetchState, loginUser, logoutUser };
+  return { user, fetchState, loginUser, logoutUser }; // Return `user` state
 };
