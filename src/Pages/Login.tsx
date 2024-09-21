@@ -1,22 +1,14 @@
-// src/components/LoginForm.tsx
-import React, { useState } from "react";
-import { useAuth } from "../hooks/uselogin";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useAuthLogin } from '../hooks/uselogin';
 
 const LoginForm: React.FC = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const { loginUser, fetchState } = useAuth();
-  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const { loginUser, fetchState } = useAuthLogin();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await loginUser({ username, password });
-    
-    // Redirect if login was successful
-    if (!fetchState.loading && !fetchState.error) {
-      navigate("/home");
-    }
   };
 
   return (
@@ -48,7 +40,7 @@ const LoginForm: React.FC = () => {
         className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
         disabled={fetchState.loading}
       >
-        {fetchState.loading ? "Logging in..." : "Login"}
+        {fetchState.loading ? 'Logging in...' : 'Login'}
       </button>
     </form>
   );

@@ -1,16 +1,24 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './Pages/Home';
 import LoginForm from './Pages/Login';
-import Home from './Pages/Home'; 
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './context/AuthProvider';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <AuthProvider>
       <Routes>
-        <Route path="/" element={<LoginForm />} /> {/* Login Page */}
-        <Route path="/home" element={<Home />} /> {/* Home Page */}
+        <Route path="/login" element={<LoginForm />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-    </Router>
+    </AuthProvider>
   );
 };
 

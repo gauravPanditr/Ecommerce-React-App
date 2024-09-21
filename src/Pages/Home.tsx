@@ -4,6 +4,8 @@ import ProductList from "../components/ProductList";
 import Navbar from "../components/navbar"; // Import your Navbar component
 
 const Home: React.FC = () => {
+  console.log("Home");
+  
   const { data: products, loading, error } = useProductFetch();
 
   if (loading) return <p className="p-4 text-white">Loading products...</p>;
