@@ -1,15 +1,22 @@
 // src/components/LoginForm.tsx
 import React, { useState } from "react";
 import { useAuth } from "../hooks/uselogin";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { loginUser, fetchState } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    loginUser({ username, password });
+    await loginUser({ username, password });
+    
+    // Redirect if login was successful
+    if (!fetchState.loading && !fetchState.error) {
+      navigate("/home");
+    }
   };
 
   return (

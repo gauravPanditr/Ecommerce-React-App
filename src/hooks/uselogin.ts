@@ -18,7 +18,7 @@ export const useAuth = () => {
       const response = await axios.post("https://fakestoreapi.com/auth/login", credentials);
         console.log(response);
           
-      // Adjust the endpoint as needed
+     
       setUser(response.data.username); // Adjust according to your response structure
       localStorage.setItem("userToken", response.data.token); // Store token if needed
       setFetchState({ data: response.data.username, loading: false, error: null });
@@ -36,5 +36,5 @@ export const useAuth = () => {
     localStorage.removeItem("userToken");
   };
 
-  return { user, fetchState, loginUser, logoutUser }; // Return `user` state
+  return { user, fetchState, loginUser, logoutUser }; 
 };
