@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,18 +16,9 @@ const Navbar: React.FC = () => {
             <h1 className="text-2xl font-bold text-gray-800">BrandName</h1>
           </div>
           <div className="hidden md:flex space-x-6">
-            <a href="#" className="text-gray-800 hover:text-gray-600">
-              Home
-            </a>
-            <a href="#" className="text-gray-800 hover:text-gray-600">
-              About
-            </a>
-            <a href="#" className="text-gray-800 hover:text-gray-600">
-              Services
-            </a>
-            <a href="#" className="text-gray-800 hover:text-gray-600">
-              Contact
-            </a>
+            <Link to="/cart" className="text-gray-800 hover:text-gray-600">
+              Cart
+            </Link>
           </div>
           <div className="md:hidden flex items-center">
             <button
@@ -56,21 +48,11 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-     
       {isOpen && (
         <div className="md:hidden">
-          <a href="#" className="block px-4 py-2 text-sm text-gray-800">
-            Home
-          </a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-800">
-            About
-          </a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-800">
-            Services
-          </a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-800">
-            Contact
-          </a>
+          <Link to="/cart" className="block px-4 py-2 text-sm text-gray-800">
+            Cart
+          </Link>
         </div>
       )}
     </nav>

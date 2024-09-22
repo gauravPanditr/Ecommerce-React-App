@@ -5,7 +5,6 @@ interface InputBoxProps {
   label: string;
   type: string;
   placeholder: string;
- // Adjust according to your typings
   error?: string;
 }
 
