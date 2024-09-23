@@ -5,8 +5,8 @@ export interface CartItem extends Product {
   quantity: number;
 }
 
-export interface CartState {
-  userId: number;
+export interface Cart {
+  
   date: string;
   products: CartItem[];
 }
